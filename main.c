@@ -1,6 +1,6 @@
 /* Raylib game by Eliot Chignell */
 
-#include "raylib.h"
+#include "raylib/src/raylib.h"
 #include "stdio.h"
 #include "stdlib.h"
 #include "math.h"
@@ -38,6 +38,8 @@ int main(void) {
     Vector2 ball = { (float) (screenWidth/2 - ballDimensions.x/2), (float) (screenHeight/2 - ballDimensions.y/2)};
     const int initialBallVelocity = 10;
     Vector2 ballVelocity = { (float) initialBallVelocity, (float) -initialBallVelocity};
+
+    ChangeDirectory(GetApplicationDirectory()); 
 
     int gameState = 0;
     int score = 0;
