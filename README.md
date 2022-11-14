@@ -6,7 +6,7 @@
 
 Download the code as a .zip ([here](https://github.com/EliotChignell/PongPing/archive/refs/heads/master.zip)) and then run the `PongPing.exe` in the `Windows` directory
 
-# MacOS Installation
+# MacOS Installation (only Apple Silicon compatible at the moment)
 
 1. Open terminal
 2. Clone the repository with ```git clone https://github.com/EliotChignell/PongPing.git```.
