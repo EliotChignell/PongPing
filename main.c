@@ -1,6 +1,6 @@
 /* Raylib game by Eliot Chignell */
 
-#include "raylib/src/raylib.h"
+#include "src/raylib.h"
 #include "stdio.h"
 #include "stdlib.h"
 #include "math.h"
