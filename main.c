@@ -1,6 +1,6 @@
 /* Raylib game by Eliot Chignell */
 
-#include "src/raylib.h"
+#include "raylib/src/raylib.h" // path to raylib.h
 #include "stdio.h"
 #include "stdlib.h"
 #include "math.h"
@@ -51,8 +51,6 @@ int main(void) {
     bool exitWindow = false;
     
     // Fonts
-    Font Fredoka_One = LoadFontEx("FredokaOne-Regular.ttf", 96, 0, 0);
-    Font Poppins = LoadFontEx("Poppins-BoldItalic.ttf", 96, 0, 0);
     Font Righteous = LoadFontEx("Righteous-Regular.ttf", 96, 0, 0);
 
     SetTargetFPS(60);
@@ -111,14 +109,16 @@ int main(void) {
                 DrawCircle(ball.x, ball.y, ballDimensions.x/2, colour5);
 
                 const char* scoreMsg = "Score: ";
-                char *num;
+                char *num = malloc(100 * sizeof(char));
                 char buffer[100];
 
-                if (asprintf(&num, "%d", score) == -1) {
+                if (sprintf(num, "%d", score) == -1) {
                     perror("asprintf");
                 } else {
                     strcat(strcpy(buffer, scoreMsg), num);
                 }
+                
+                free(num);
 
                 Vector2 scoreMsgPosition = { 10, 10 };
                 Vector2 tipMsgPosition = { 1020, 10 };
@@ -229,14 +229,16 @@ int main(void) {
                 const char msg2[] = "Press ESC to quit";
 
                 const char* scoreMsg1 = "Score: ";
-                char *num1;
+                char *num1 = malloc(100 * sizeof(char));
                 char msg0[100];
 
-                if (asprintf(&num1, "%d", score) == -1) {
+                if (sprintf(num1, "%d", score) == -1) {
                     perror("asprintf");
                 } else {
                     strcat(strcpy(msg0, scoreMsg1), num1);
                 }
+
+                free(num1);
 
                 Vector2 gopos, m0pos, m1pos, m2pos;
                 gopos.x = screenWidth/2 - MeasureTextEx(Righteous, gameOverMsg, 96.0f, 3.0f).x/2;
@@ -280,6 +282,8 @@ int main(void) {
 
         EndDrawing();
     }
+    
+    UnloadFont(Righteous);
 
     CloseWindow();
 }
